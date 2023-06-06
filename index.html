@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://pixijs.download/release/pixi.js"></script>
+    <script src="./game-of-life.js">
+
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .canvas__wrapper {
+            height: 100%;
+            width: 100%;
+
+        }
+
+        canvas {
+            border: 1px solid black;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<!-- <body onload="init()"> -->
+
+<body>
+    <!-- <div class="canvas__wrapper">
+        <canvas id="board"></canvas>
+
+    </div> -->
+    <script>
+        let app = new PIXI.Application({ width: 640, height: 360 });
+        document.body.appendChild(app.view);
+
+        let sprite = PIXI.Sprite.from('sample.png');
+        app.stage.addChild(sprite);
+
+        // Add a variable to count up the seconds our demo has been running
+        let elapsed = 0.0;
+        // Tell our application's ticker to run a new callback every frame, passing
+        // in the amount of time that has passed since the last tick
+        app.ticker.add((delta) => {
+            // Add the time to our total elapsed time
+            elapsed += delta;
+            // Update the sprite's X position based on the cosine of our elapsed time.  We divide
+            // by 50 to slow the animation down a bit...
+            sprite.x = 100.0 + Math.cos(elapsed / 50.0) * 100.0;
+        });
+    </script>
+</body>
+
+</html>
